@@ -1,0 +1,50 @@
+{
+  "_from": "node-red-contrib-storage-s3",
+  "_id": "node-red-contrib-storage-s3@0.0.4",
+  "_inBundle": false,
+  "_integrity": "sha1-LtSjAU8NZhduIKhvqlSQFWWMCjw=",
+  "_location": "/node-red-contrib-storage-s3",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "node-red-contrib-storage-s3",
+    "name": "node-red-contrib-storage-s3",
+    "escapedName": "node-red-contrib-storage-s3",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/node-red-contrib-storage-s3/-/node-red-contrib-storage-s3-0.0.4.tgz",
+  "_shasum": "2ed4a3014f0d66176e20a86faa549015658c0a3c",
+  "_spec": "node-red-contrib-storage-s3",
+  "_where": "/mnt/c/Users/sa_ka/work/node-red-contrib-storage-s3",
+  "author": {
+    "name": "Kieran Dolan",
+    "email": "DOLANKIE@uk.ibm.com"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "aws-sdk": "2.4.x",
+    "when": "3.7.x"
+  },
+  "deprecated": false,
+  "description": "implementation of the node-red storage API for AWS-S3",
+  "keywords": [
+    "node-red",
+    "storage",
+    "AWS",
+    "S3"
+  ],
+  "license": "Apache-2.0",
+  "main": "s3storage.js",
+  "name": "node-red-contrib-storage-s3",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.0.4"
+}
