@@ -82,35 +82,26 @@ var s3storage = {
             
         return when.promise(function(resolve,reject) {
             s3 = new AWS.S3();
-            s3.listBuckets(function(err, data) {
-                if (err) {
-                    console.error("s3s access error " + err + err.stack) ;
-                    reject("Failed to access AWS S3");
-                }
-                else {
-                    if (!s3BucketName) {
-                        s3BucketName = data.Owner.DisplayName + "-node-red"
-                    }
+            if (!s3BucketName) {
+                s3BucketName = data.Owner.DisplayName + "-node-red"
+            }
 
-                    var params =  {Bucket: s3BucketName};
-                    s3.listObjects(params, function(err, data) {
+            var params =  {Bucket: s3BucketName};
+            s3.listObjects(params, function(err, data) {
+                if (err) {
+                    console.error("s3s get bucket error " + params) ;
+                    s3.createBucket(params,function(err) {
                         if (err) {
-                            console.error("s3s get bucket error " + params) ;
-                            s3.createBucket(params,function(err) {
-                                if (err) {
-                                    reject("Failed to create bucket: "+err);
-                                } else {
-                                    prepopulateFlows(resolve);
-                                }
-                            });
+                            reject("Failed to create bucket: "+err);
                         } else {
                             prepopulateFlows(resolve);
-                            resolve();
                         }
                     });
+                } else {
+                    prepopulateFlows(resolve);
+                    resolve();
                 }
-
-            }) ;
+            });
         });
     },
     
