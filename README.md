@@ -22,9 +22,22 @@ default settings for optional configuration:
 <li>awsS3Bucket: user display name + '-node-red'</li>
 <li>awsS3Appname: aws instance name</li>
 </ul>
+
+Required Permissions
+---------------------
+- s3:CreateBucket
+- s3:ListBucket
+- s3:PutObject
+- s3:GetObject
+
 Author
 -------
 Kieran Dolan (@kierandol)  
+
+
+Modifier
+-------
+sakazuki
 
 
 Copyright and license
