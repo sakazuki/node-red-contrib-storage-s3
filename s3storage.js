@@ -216,7 +216,7 @@ var s3storage = {
 
             var params =  {};
             params.Bucket = s3BucketName;
-            params.Prefix = appname+"/lib/"+type+(path.substr(0)!="/"?"/":"")+path;
+            params.Prefix = (appname+"/lib/"+type+"/"+path).replace(/\/+/g, '/');
             params.Delimiter = "/";
             s3.listObjects(params,function(err,data) {
                 if (err) {
@@ -246,9 +246,9 @@ var s3storage = {
                         var resultData = [] ; 
                         for (var i = 0; i < data.CommonPrefixes.length; i++) {
                             var li = data.CommonPrefixes[i];
-                            resultData.push(li['Prefix'].substr(data.Prefix.length,
-                                    li['Prefix'].length - (data.Prefix.length+1))) ;
-                        } 
+                            resultData.push(li['Prefix'].substr(data.Prefix.length)) ;
+                        }
+                        if (data.Contents.length == 0) resolve(resultData);
                         var prefixes = {} ;
                         for (var i = 0; i < data.Contents.length; i++) {
                             var li = data.Contents[i];
